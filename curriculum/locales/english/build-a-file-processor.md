@@ -470,7 +470,7 @@ assert.match(
 
 ### --description--
 
-`fs.appendFileSync` adds content to an existing file without overwriting it. If the file does not exist, it is created 
+`fs.appendFileSync` adds content to an existing file without overwriting it. If the file does not exist, it is created.
 
 Here's an example:
 
@@ -1000,7 +1000,7 @@ assert.match(
 
 ### --description--
 
-The `crypto` module provides cryptographic functionality. One common use is hashing, in which data is transformed into a fixed-length string that cannot be reversed. 
+The `crypto` module provides cryptographic functionality. One common use is hashing, in which data is transformed into a fixed-length string that cannot be reversed.
 
 You can use `crypto.createHash` to create a hash, `.update` to feed it data, and `.digest` to get the result:
 
@@ -1804,7 +1804,7 @@ assert.match(
 
 ### --description--
 
-`process` is a global object in Node.j, meaning you don't need to `require` it. It provides information about the current Node.js process:
+`process` is a global object in Node.js, meaning you don't need to `require` it. It provides information about the current Node.js process:
 
 - `process.version` - the Node.js version string (e.g. `'v20.0.0'`)
 - `process.platform` - the operating system platform (e.g. `'linux'`)

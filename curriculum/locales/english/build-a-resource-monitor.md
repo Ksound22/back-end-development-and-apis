@@ -495,7 +495,7 @@ server.listen(PORT, () => {
 
 When a browser completes the WebSocket handshake with the server, `wss` emits a `'connection'` event. The event listener receives the individual `socket` object representing that client's connection.
 
-Register a `'connection'` listener on `wss` that logs `'Client connected'` and accepts a `socket` parameter
+Register a `'connection'` listener on `wss` that logs `'Client connected'` and accepts a `socket` parameter.
 
 Place this after the `wss` declaration and before `server.listen`.
 
