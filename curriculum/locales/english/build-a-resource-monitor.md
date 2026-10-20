@@ -606,7 +606,8 @@ server.listen(PORT, () => {
 
 Each `socket` object also emits lifecycle events. The `'message'` event fires whenever the client sends data to the server. The callback receives a `Buffer` containing the message, so call `.toString()` to read it as a string.
 
-Inside the `'connection'` callback, add a `'message'` listener on `socket`.
+Inside the `'connection'` callback, add a `'message'` listener on `socket`. In the listener callback, convert the received data to a string using `.toString()` and log it to the console.
+
 
 ### --tests--
 
