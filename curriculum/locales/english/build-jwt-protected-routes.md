@@ -350,21 +350,27 @@ A JWT is signed with a secret key that only your server knows. The same secret i
 The `.env` file already defines `PORT`. Add a `JWT_SECRET` variable to `.env` and set it to any long, random string.
 
 ```bash
-JWT_SECRET=replace_with_a_long_random_string
+JWT_SECRET=secure_string
 ```
 
 ### --tests--
 
-`.env` should define a non-empty `JWT_SECRET` variable.
+`.env` should define a `JWT_SECRET` variable set to your own random string of at least 32 characters.
 
 ```js
 const __env = await __helpers.getFile(project.dashedName, ".env");
 const { parseEnv } = await import("node:util");
 const __vars = parseEnv(__env);
 assert.property(__vars, "JWT_SECRET", "Add a JWT_SECRET variable to .env.");
-assert.isNotEmpty(
+assert.notEqual(
   __vars.JWT_SECRET,
-  "JWT_SECRET should have a non-empty value.",
+  "replace_with_a_long_random_string",
+  "Replace the placeholder with your own random string.",
+);
+assert.isAtLeast(
+  __vars.JWT_SECRET.length,
+  32,
+  "JWT_SECRET should be at least 32 characters long.",
 );
 ```
 

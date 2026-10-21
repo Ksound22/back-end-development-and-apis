@@ -164,6 +164,24 @@ Then run `node server.js` in the terminal to start your server.
 
 ### --tests--
 
+You should call `app.listen()` with your `port` variable as the first argument.
+
+```js
+const file = await __helpers.getFile(project.dashedName, "server.js");
+const code = new __helpers.Tower(file);
+const listenCalls = code.getCalls("app.listen");
+
+assert.isAbove(listenCalls.length, 0, "You should call 'app.listen()'.");
+
+const firstArg = listenCalls[0].ast.expression.arguments[0];
+
+assert.equal(
+  firstArg?.name,
+  "port",
+  "You should pass the 'port' variable as the first argument to 'app.listen()'.",
+);
+```
+
 Your server should be listening on port `3000`.
 
 ```js

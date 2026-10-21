@@ -1046,20 +1046,22 @@ const __usesSha256 = __i
 assert.isTrue(__usesSha256, 'You should call `crypto.createHash("sha256")`');
 ```
 
-Running `server.js` should print a 64-character hex digest.
+Running `server.js` should print the SHA-256 hex digest of `'freeCodeCamp!'`.
 
 ```js
 const { stdout } = await __helpers.getCommandOutput(
   "node server.js",
   project.dashedName,
 );
+const { createHash } = await import("node:crypto");
+const __expected = createHash("sha256").update("freeCodeCamp!").digest("hex");
 const __hashLine = stdout
   .trim()
   .split("\n")
-  .find((l) => /^[0-9a-f]{64}$/.test(l.trim()));
+  .find((l) => l.trim() === __expected);
 assert.isDefined(
   __hashLine,
-  "Running `node server.js` should print a 64-character SHA-256 hex digest",
+  "Running `node server.js` should print the SHA-256 hex digest of `'freeCodeCamp!'`",
 );
 ```
 
@@ -1763,8 +1765,8 @@ assert.isAbove(
   "You should call `path.parse(filePath)` in `server.js`",
 );
 assert.isTrue(
-  __calls.some((c) => c.arguments.length > 0),
-  "You should pass the path to `path.parse`",
+  __calls.some((c) => __i.argText(c.arguments.at(0)) === "filePath"),
+  "You should pass `filePath` to `path.parse`",
 );
 ```
 
